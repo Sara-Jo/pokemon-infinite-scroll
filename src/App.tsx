@@ -1,8 +1,8 @@
+import React, { useCallback, useEffect, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { PokemonResult } from "./types";
 import { fetchPokemon } from "./api";
 import "./App.css";
-import React, { useCallback, useEffect, useRef } from "react";
-import { PokemonResult } from "./types";
 
 function App() {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
