@@ -5,21 +5,15 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { PokemonResult } from "./types";
 
 function App() {
-  const {
-    data,
-    isLoading,
-    isError,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey: ["pokemon"],
-    queryFn: fetchPokemon,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => {
-      return lastPage.isLast ? undefined : lastPage.nextPage;
-    },
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["pokemon"],
+      queryFn: fetchPokemon,
+      initialPageParam: 0,
+      getNextPageParam: (lastPage) => {
+        return lastPage.isLast ? undefined : lastPage.nextPage;
+      },
+    });
 
   const observerElem = useRef<HTMLDivElement | null>(null);
 
